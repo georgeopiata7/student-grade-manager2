@@ -4,34 +4,42 @@ def add_student():
     try:
         student_name = input("Enter student's NAME: ")
         student_marks = int(input("Enter student's MARKS: "))
-        students_result[student_name] = student_marks
-        print(f"{student_name} added successfully!")
+        if student_marks >= 0 and student_marks <= 100:
+            students_result[student_name] = student_marks
+            print(f"{student_name} added successfully!")
+        else:
+            print(f"ENTER VALID MARKS")
+            
+        
     except ValueError:
         print(f"INVALID INPUT")
 
 def view_result():
-    if len(students_result.items()) == 0:
+    if not students_result:
         print(f"NO STUDENT FOUND")
     else:
         for student_name, student_marks in students_result.items():
             print(f"{student_name}: {student_marks}%")                                
 
 def highest_student():
-    if len(students_result.items()) == 0:
+    if not students_result:
         print(f"NO STUDENT FOUND")
     else:
-        highest_score = max(students_result.values())
-        print(f"Highest-score = {highest_score}%")
+        highest_student = max(students_result, key = students_result.get)
+        highest_marks = max(students_result.values())
 
-def lowest_score():
-    if len(students_result.items()) == 0:
+        print(f"Highest-student = {highest_student} : {highest_marks}%")
+
+def lowest_student():
+    if not students_result:
             print(f"NO STUDENT FOUND")
     else:
-        lowest_score = min(students_result.values())
-        print(f"Lowest-score = {lowest_score}%")
+        lowest_student = min(students_result, key = students_result.get)
+        lowest_marks = min(students_result.values())
+        print(f"Lowest-student = {lowest_student} : {lowest_marks}%")
 
 def students_average():
-    if len(students_result.items()) == 0:
+    if not students_result:
             print(f"NO STUDENT FOUND")
     else:        
         total_marks = sum(students_result.values())
@@ -70,7 +78,7 @@ while True:
             highest_student()
 
         elif user_option == 4:
-            lowest_score()
+            lowest_student()
         elif user_option == 5:
             students_average()
         elif user_option == 6:
@@ -78,7 +86,6 @@ while True:
             break
         else:
             print(f"Invalid choice")
-        continue
+        
     except ValueError:
         print(f"INVALID CHOICE!")
-        continue
