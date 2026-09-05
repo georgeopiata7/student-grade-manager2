@@ -3,6 +3,9 @@ students_result = {}
 def add_student():
     try:
         student_name = input("Enter student's NAME: ")
+        if student_name in students_result:
+            print(f"STUDENT ALREADY EXIST")
+        
         student_marks = int(input("Enter student's MARKS: "))
         if student_marks >= 0 and student_marks <= 100:
             students_result[student_name] = student_marks
@@ -84,8 +87,7 @@ while True:
         elif user_option == 6:
             print(f"Exited successfully!")
             break
-        else:
-            print(f"Invalid choice")
+        
         
     except ValueError:
         print(f"INVALID CHOICE!")
