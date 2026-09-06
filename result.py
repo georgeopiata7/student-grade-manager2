@@ -5,6 +5,7 @@ def add_student():
         student_name = input("Enter student's NAME: ")
         if student_name in students_result:
             print(f"STUDENT ALREADY EXIST")
+            return
         
         student_marks = int(input("Enter student's MARKS: "))
         if student_marks >= 0 and student_marks <= 100:
