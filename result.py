@@ -1,6 +1,7 @@
 students_result = {}
 
 def add_student():
+    
     try:
         student_name = input("Enter student's NAME: ")
         if student_name in students_result:
@@ -23,7 +24,8 @@ def view_result():
         print(f"NO STUDENT FOUND")
     else:
         for student_name, student_marks in students_result.items():
-            print(f"{student_name}: {student_marks}%")                                
+            grades = add_grades(student_marks)
+            print(f"{student_name}: {student_marks}% - Grade:{grades}")                                
 
 def highest_student():
     if not students_result:
@@ -50,6 +52,20 @@ def students_average():
         total_students = len(students_result)
         average = total_marks / total_students
         print(f"Average = {average}%")
+
+
+
+def add_grades(student_marks):
+    if student_marks >= 80 and student_marks <= 100:
+        return "A"
+    elif student_marks >= 70 and student_marks <= 79:
+        return "B"
+    elif student_marks >= 60 and student_marks <= 69:
+        return "C"
+    elif student_marks >= 50 and student_marks <=59:
+        return "D"
+    elif student_marks >= 0 and student_marks <= 49:
+        return "E"
 
 
 
